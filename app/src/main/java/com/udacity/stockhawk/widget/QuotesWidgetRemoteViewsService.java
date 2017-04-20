@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Binder;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -77,15 +78,16 @@ public class QuotesWidgetRemoteViewsService extends RemoteViewsService {
                 float rawAbsoluteChange = data.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
 
                 if(rawAbsoluteChange > 0) {
-                    views.setTextColor(R.id.change,
-                            ChartActivity.getColorCompat(getApplicationContext(), R.color.material_green_700));
+                    views.setViewVisibility(R.id.change2, View.GONE);
+                    views.setViewVisibility(R.id.change, View.VISIBLE);
                 } else {
-                    views.setTextColor(R.id.change,
-                            ChartActivity.getColorCompat(getApplicationContext(), R.color.material_red_700));
+                    views.setViewVisibility(R.id.change2, View.VISIBLE);
+                    views.setViewVisibility(R.id.change, View.GONE);
                 }
 
                 String change = dollarFormatWithPlus.format(rawAbsoluteChange);
                 views.setTextViewText(R.id.change, change);
+                views.setTextViewText(R.id.change2, change);
 
                 setRemoteContentDescription(views, data.getString(Contract.Quote.POSITION_SYMBOL));
                 final Intent fillInIntent = new Intent();

@@ -6,10 +6,10 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:orientation="horizontal"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingEnd="@dimen/activity_horizontal_margin">
+    android:paddingStart="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/symbol"
@@ -30,10 +30,10 @@
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10sp"
             android:layout_marginEnd="10sp"
-            tools:text="1000.00"
-            tools:ignore="RtlHardcoded" />
+            android:layout_marginRight="10sp"
+            tools:ignore="RtlHardcoded"
+            tools:text="1000.00" />
 
         <TextView
             android:id="@+id/change"
@@ -41,10 +41,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingLeft="@dimen/list_item_padding"
-            android:paddingStart="@dimen/list_item_padding"
-            android:paddingRight="@dimen/list_item_padding"
             android:paddingEnd="@dimen/list_item_padding"
+            android:paddingLeft="@dimen/list_item_padding"
+            android:paddingRight="@dimen/list_item_padding"
+            android:paddingStart="@dimen/list_item_padding"
+            tools:text="100%" />
+
+        <TextView
+            android:id="@+id/change2"
+            style="@style/PercentChangeTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/percent_change_pill_red"
+            android:paddingEnd="@dimen/list_item_padding"
+            android:paddingLeft="@dimen/list_item_padding"
+            android:paddingRight="@dimen/list_item_padding"
+            android:paddingStart="@dimen/list_item_padding"
+            android:visibility="gone"
             tools:text="100%" />
     </LinearLayout>
 </LinearLayout>
