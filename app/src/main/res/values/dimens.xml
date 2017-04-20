@@ -1,3 +1,6 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="dialog_small_margin">4dp</dimen>
+    <dimen name="dialog_large_margin">16dp</dimen>
+    <dimen name="list_item_padding">3dp</dimen>
 </resources>
