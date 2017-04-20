@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.ui;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,7 +67,6 @@ public class ChartActivity extends AppCompatActivity implements LoaderManager.Lo
             String history[] = data.getString(Contract.Quote.POSITION_HISTORY).split("\\n");
             for(String h : history) {
                 if(!h.equals("")) {
-                    Log.d(TAG, "onLoadFinished: " + h);
                     String line[] = h.split(", ");
                     entries.add(new Entry(Long.parseLong(line[0]), Float.parseFloat(line[1])));
                 }
@@ -74,7 +74,7 @@ public class ChartActivity extends AppCompatActivity implements LoaderManager.Lo
             if(entries.size() > 0) {
                 Collections.sort(entries, new EntryXComparator());
                 LineDataSet dataSet = new LineDataSet(entries, mSymbol);
-                dataSet.setColor(getColorCompat(R.color.material_blue_500));
+                dataSet.setColor(getColorCompat(this, R.color.material_blue_500));
                 chart.setData(new LineData(dataSet));
                 XAxis xAxis = chart.getXAxis();
                 xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -89,11 +89,11 @@ public class ChartActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     @SuppressWarnings("deprecation")
-    @ColorInt int getColorCompat(@ColorRes int res) {
+    @ColorInt public static int getColorCompat(Context c, @ColorRes int res) {
         if(Build.VERSION.SDK_INT >= 23) {
-            return getColor(res);
+            return c.getColor(res);
         } else {
-            return getResources().getColor(res);
+            return c.getResources().getColor(res);
         }
     }
 

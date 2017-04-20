@@ -37,5 +37,6 @@
 
     <string name="menu_item_percentage">Percentage</string>
     <string name="menu_item_dollar">Dollar</string>
+    <string name="empty_quotes_list">No Quotes Information Available</string>
 
 </resources>
